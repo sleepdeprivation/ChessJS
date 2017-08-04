@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script src="bundle.js"></script>
+    </head>
+
+    <body>
+        <canvas id="canvas" width=1200 height=800></canvas>
+    </body>
+
+    <script>
+    window.addEventListener('load', function() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext('2d');
+        var pixelgrid = new PG.PixelGrid(1200, 800, ctx);
+        console.log(pixelgrid);;
+        pixelgrid.draw();
+        console.log("worked");
+    }, false)
+    </script>
+
+
+</html>

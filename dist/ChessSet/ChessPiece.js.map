@@ -1,0 +1,1 @@
+{"version":3,"file":"ChessPiece.js","sourceRoot":"","sources":["../../src/ChessSet/ChessPiece.ts"],"names":[],"mappings":";;AAEA;IAME,YAAY,CAAU,EAAE,CAAC;QAFzB,UAAK,GAAa,IAAI,CAAC;QAGrB,IAAI,CAAC,IAAI,GAAG,CAAC,CAAC;QACd,IAAI,CAAC,KAAK,GAAG,CAAC,CAAC;IACjB,CAAC;IAED,OAAO;QACL,MAAM,CAAC,IAAI,CAAC,KAAK,CAAC;IACpB,CAAC;CAGF;AAhBD,6BAgBC"}
