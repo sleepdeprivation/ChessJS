@@ -1,19 +1,14 @@
+export class ChessPiece {
+  type: string
 
+  white = true
 
-export default class ChessPiece{
-
-  type : string;
-
-  white : boolean = true;
-
-  constructor(t : string, w){
-    this.type = t;
-    this.white = w;
+  constructor(t: string, w) {
+    this.type = t
+    this.white = w
   }
 
-  isWhite(){
-    return this.white;
+  isWhite() {
+    return this.white
   }
-
-
 }

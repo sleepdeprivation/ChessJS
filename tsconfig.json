@@ -1,15 +1,33 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist/",        // path to output directory
-        "sourceMap": true,          // allow sourcemap support
-        "strictNullChecks": true,   // enable strict null checks as a best practice
-        "module": "commonjs",            // specifiy module code generation
-        "jsx": "react",             // use typescript to transpile jsx to js
-        "target": "es6",            // specify ECMAScript target version
-        "allowJs": true             // allow a partial TypeScript and JavaScript codebase
-    },
-    "include": [
-        "./src/", "./tests/"
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "es6",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017"
     ],
-    "compileOnSave": true
+    "allowSyntheticDefaultImports": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "pretty": true,
+    "jsx": "react",
+    // change this to any hyperscript like function that you're using
+    "jsxFactory": "React.createElement",
+    "sourceMap": true,
+    "outDir": "lib",
+    "declaration": true,
+    "declarationDir": "typings",
+    "stripInternal": true
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
 }
