@@ -1,16 +1,16 @@
 {
-  "name": "@next-gen/typescript-lib-starter",
-  "version": "1.7.0",
-  "description": "TypeScript library setup for multiple compilation targets using tsc and webpack",
-  "main": "umd/typescript-lib-starter.js",
+  "name": "simple-chess",
+  "version": "0.0.3",
+  "description": "A simple implementation of a chessboard, pieces and generators in typescript",
+  "main": "umd/simple-chess.js",
   "module": "lib/index.js",
   "es2015": "lib-esm/index.js",
   "typings": "typings/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://www.github.com/Hotell/typescript-lib-starter"
+    "url": "https://github.com/sleepdeprivation/ChessJS.git"
   },
-  "author": "Martin Hochel",
+  "author": "Christian Burke",
   "license": "MIT",
   "engines": {
     "node": ">=6.9"
