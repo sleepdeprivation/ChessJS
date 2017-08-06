@@ -14,11 +14,59 @@ export class ChessBoard extends Array2D<ChessPiece> {
     Q: this.fn,
     K: this.gn,
     N: this.gn,
-    P: this.pn,
+    PW: this.pn,
+    PB: this.pn,
   }
 
   constructor() {
     super(8, 8)
+  }
+
+  setUpDefaultBoard() {
+    this.grid[0] = [
+      new ChessPiece('R', false),
+      new ChessPiece('N', false),
+      new ChessPiece('B', false),
+      new ChessPiece('Q', false),
+
+      new ChessPiece('K', false),
+      new ChessPiece('B', false),
+      new ChessPiece('N', false),
+      new ChessPiece('R', false),
+    ]
+    this.grid[1] = [
+      new ChessPiece('PB', false),
+      new ChessPiece('PB', false),
+      new ChessPiece('PB', false),
+      new ChessPiece('PB', false),
+
+      new ChessPiece('PB', false),
+      new ChessPiece('PB', false),
+      new ChessPiece('PB', false),
+      new ChessPiece('PB', false),
+    ]
+    this.grid[6] = [
+      new ChessPiece('PW', true),
+      new ChessPiece('PW', true),
+      new ChessPiece('PW', true),
+      new ChessPiece('PW', true),
+
+      new ChessPiece('PW', true),
+      new ChessPiece('PW', true),
+      new ChessPiece('PW', true),
+      new ChessPiece('PW', true),
+    ]
+    this.grid[7] = [
+      new ChessPiece('R', true),
+      new ChessPiece('N', true),
+      new ChessPiece('B', true),
+      new ChessPiece('Q', true),
+
+      new ChessPiece('K', true),
+      new ChessPiece('B', true),
+      new ChessPiece('N', true),
+      new ChessPiece('R', true),
+    ]
   }
 
   outOfBounds(c) {
@@ -45,6 +93,19 @@ export class ChessBoard extends Array2D<ChessPiece> {
 
   addArrays(A, B) {
     return [A[0] + B[0], A[1] + B[1]]
+  }
+
+  /*
+    Supply a transformation tx to convert the board
+    into a transformed board where each piece p is transformed to tx(p).
+  */
+  transformBoard(tx) {
+    const arr = new Array2D(8, 8)
+    this.each(function(ii, kk, el) {
+      arr.set(ii, kk, tx(el))
+    })
+
+    return arr
   }
 
   /*

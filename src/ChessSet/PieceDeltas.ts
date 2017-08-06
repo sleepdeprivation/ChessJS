@@ -21,8 +21,9 @@ const deltaQK = deltaR.concat(deltaB)
 */
 const deltaN = [[1, 2], [2, 1], [1, -2], [-2, 1], [-1, 2], [2, -1], [-1, -2], [-2, -1]]
 
-// Pawn just moves forward
-const deltaP = [[0, 1]]
+// Pawn just moves forward, but the direction is dependant on the color
+const deltaPW = [[0, -1]]
+const deltaPB = [[0, 1]]
 
 const deltas = {
   N: deltaN,
@@ -30,7 +31,8 @@ const deltas = {
   R: deltaR,
   K: deltaQK,
   Q: deltaQK,
-  P: deltaP,
+  PW: deltaPW,
+  PB : deltaPB,
 }
 
 export default deltas
