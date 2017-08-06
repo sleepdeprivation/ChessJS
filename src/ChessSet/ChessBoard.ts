@@ -22,6 +22,9 @@ export class ChessBoard extends Array2D<ChessPiece> {
     super(8, 8)
   }
 
+  /*
+    Set up a standard chess board
+  */
   setUpDefaultBoard() {
     this.grid[0] = [
       new ChessPiece('R', false),
@@ -87,13 +90,19 @@ export class ChessBoard extends Array2D<ChessPiece> {
     }
   }
 
+  /*
+    Check if there is a piece in the given spot
+  */
   emptyAt(c: Array<number>) {
     return this.getAt(c) == null
   }
 
-  friendAt(c : Array<number>){
+  /*
+    Check if the piece in the given spot belongs to the side whose turn it is
+  */
+  friendAt(c: Array<number>) {
     if (this.getAt(c) == null) {
-      return false;
+      return false
     }
     if (this.whiteToMove) {
       return this.getAt(c).isWhite()
@@ -102,13 +111,44 @@ export class ChessBoard extends Array2D<ChessPiece> {
     }
   }
 
+  /*
+    Helper function
+    Perform componentwise addition on an 1-D array of length 2
+  */
   addArrays(A, B) {
     return [A[0] + B[0], A[1] + B[1]]
   }
 
   /*
+    Check if the given move is on the given list of moves
+  */
+  isMoveOnList(move, list) {
+    for (move of list) {
+      if (move[0] === move[0] && move[1] === move[1]) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  /*
+    Perform a valid move
+    Will also flip the whiteToMove boolean
+  */
+  performMove(src, dest) {
+    if (this.friendAt(src) && this.isMoveOnList(dest, this.generateMoveList(src))) {
+      this.setAt(dest, this.getAt(src))
+      this.setAt(src, null)
+      this.whiteToMove = !this.whiteToMove
+    }
+  }
+
+  /*
     Supply a transformation tx to convert the board
     into a transformed board where each piece p is transformed to tx(p).
+    tx should have signature tx(ii, kk, element), where
+    ii - row, kk - column, and element - the element at (ii,kk)
   */
   transformBoard(tx) {
     const arr = new Array2D(8, 8)
