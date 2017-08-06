@@ -1,6 +1,6 @@
 {
   "name": "simple-chess",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A simple implementation of a chessboard, pieces and generators in typescript",
   "main": "umd/simple-chess.js",
   "module": "lib/index.js",
