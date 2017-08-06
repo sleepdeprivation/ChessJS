@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.9"></a>
+## [0.0.9](https://github.com/sleepdeprivation/ChessJS/compare/v0.0.8...v0.0.9) (2017-08-06)
+
+
+### Bug Fixes
+
+* **$ChessBoard.ts:** fixes pawns move generators, which were previously moving horizontally instead ([8e54f1f](https://github.com/sleepdeprivation/ChessJS/commit/8e54f1f))
+
+
+
 <a name="0.0.8"></a>
 ## [0.0.8](https://github.com/sleepdeprivation/ChessJS/compare/v0.0.7...v0.0.8) (2017-08-06)
 
