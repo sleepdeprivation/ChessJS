@@ -54,9 +54,9 @@ const Q44 = R44.concat(B44)
 // king
 const K44 = [[3, 4], [5, 4], [4, 3], [4, 5], [5, 5], [3, 3], [3, 5], [5, 3]]
 // Pawn White
-const PW44 = [[4, 3]]
+const PW44 = [[3, 4]]
 // Pawn Black
-const PB44 = [[4, 5]]
+const PB44 = [[5, 4]]
 // kNight
 const N44 = [[5, 6], [6, 5], [5, 2], [2, 5], [3, 6], [6, 3], [3, 2], [2, 3]]
 
@@ -119,5 +119,12 @@ describe('Move Generator Test', () => {
     cb.set(4, 4, new ChessPiece('PB', true))
     const L = cb.generateMoveList([4, 4])
     expect(equal_arrays(L, PB44)).toEqual(true)
+  })
+  it('should verify some initial movesets', () => {
+    const cb = new ChessBoard()
+    cb.setUpDefaultBoard()
+    const L = cb.generateMoveList([6, 6]) // should be a pawn
+    console.log(L)
+    expect(equal_arrays(L, [[5, 6]])).toEqual(true)
   })
 })
