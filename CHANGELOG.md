@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.10"></a>
+## [0.0.10](https://github.com/sleepdeprivation/ChessJS/compare/v0.0.9...v0.0.10) (2017-08-06)
+
+
+### Bug Fixes
+
+* **ChessBoard.ts:** Fixed "enemyAt" and added "friendAt", added tests for initial movesets for white ([42c776a](https://github.com/sleepdeprivation/ChessJS/commit/42c776a))
+
+
+
 <a name="0.0.9"></a>
 ## [0.0.9](https://github.com/sleepdeprivation/ChessJS/compare/v0.0.8...v0.0.9) (2017-08-06)
 
