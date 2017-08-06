@@ -81,14 +81,25 @@ export class ChessBoard extends Array2D<ChessPiece> {
       return false
     }
     if (this.whiteToMove) {
-      return this.getAt(c).isWhite()
+      return !this.getAt(c).isWhite() // white's move and we're white, so black is enemy
     } else {
-      return !this.getAt(c).isWhite()
+      return this.getAt(c).isWhite()
     }
   }
 
   emptyAt(c: Array<number>) {
     return this.getAt(c) == null
+  }
+
+  friendAt(c : Array<number>){
+    if (this.getAt(c) == null) {
+      return false;
+    }
+    if (this.whiteToMove) {
+      return this.getAt(c).isWhite()
+    } else {
+      return !this.getAt(c).isWhite()
+    }
   }
 
   addArrays(A, B) {
@@ -154,7 +165,7 @@ export class ChessBoard extends Array2D<ChessPiece> {
   */
   gn(list, cursor, delta) {
     if (this.outOfBounds(cursor)) return
-    if (this.emptyAt(cursor) || this.enemyAt(cursor)) {
+    if ((this.emptyAt(cursor) || this.enemyAt(cursor)) && !this.friendAt(cursor)) {
       list.push(cursor)
     }
   }
