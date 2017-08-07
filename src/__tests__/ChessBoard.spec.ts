@@ -124,7 +124,14 @@ describe('Move Generator Test', () => {
     const cb = new ChessBoard()
     cb.setUpDefaultBoard()
     const L = cb.generateMoveList([6, 6]) // should be a white pawn
-    expect(equal_arrays(L, [[5, 6]])).toEqual(true)
+    expect(equal_arrays(L, [[5, 6], [4, 6]])).toEqual(true)
+  })
+  it('should verify that a white pawn can attack diagonally', () => {
+    const cb = new ChessBoard()
+    cb.setUpDefaultBoard()
+    cb.set(5, 4, new ChessPiece('R', false)) // threaten!
+    const L = cb.generateMoveList([6, 5]) // should be a white pawn
+    expect(equal_arrays(L, [[5, 5], [4, 5], [5, 4]])).toEqual(true) // which can't move
   })
   it('should verify initial moveset of a white queen', () => {
     const cb = new ChessBoard()

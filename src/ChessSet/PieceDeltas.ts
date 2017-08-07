@@ -24,6 +24,12 @@ const deltaN = [[1, 2], [2, 1], [1, -2], [-2, 1], [-1, 2], [2, -1], [-1, -2], [-
 // Pawn just moves forward, but the direction is dependant on the color
 const deltaPW = [[-1, 0]]
 const deltaPB = [[1, 0]]
+// pawn can also attack diagonally
+const blackPawnDiagonals = [[1, -1], [1, 1]]
+const whitePawnDiagonals = [[-1, 1], [-1, -1]]
+// pawn can also move twice on first move
+const blackPawnFirstMove = [[2, 0]]
+const whitePawnFirstMove = [[-2, 0]]
 
 const deltas = {
   N: deltaN,
@@ -33,6 +39,10 @@ const deltas = {
   Q: deltaQK,
   PW: deltaPW,
   PB: deltaPB,
+  PW_diag: whitePawnDiagonals,
+  PB_diag: blackPawnDiagonals,
+  PW_first: whitePawnFirstMove,
+  PB_first: blackPawnFirstMove,
 }
 
 export default deltas

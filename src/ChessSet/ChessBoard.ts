@@ -123,8 +123,8 @@ export class ChessBoard extends Array2D<ChessPiece> {
     Check if the given move is on the given list of moves
   */
   isMoveOnList(move, list) {
-    for (move of list) {
-      if (move[0] === move[0] && move[1] === move[1]) {
+    for (const validMove of list) {
+      if (move[0] === validMove[0] && move[1] === validMove[1]) {
         return true
       }
     }
@@ -179,6 +179,8 @@ export class ChessBoard extends Array2D<ChessPiece> {
       }.bind(this)
     )
 
+    this.generateSpecialMoves(m, c)
+
     return m
   }
 
@@ -211,7 +213,9 @@ export class ChessBoard extends Array2D<ChessPiece> {
   }
 
   /*
-    Pawns are not allowed to move into enemies
+    Pawns are not allowed to move into enemies,
+    and can move 2 moves as their first move
+    and can move into enemies on their forward diagonals
   */
   pn(list, cursor, delta) {
     if (this.outOfBounds(cursor)) return
@@ -219,4 +223,62 @@ export class ChessBoard extends Array2D<ChessPiece> {
       list.push(cursor)
     }
   }
+
+  /*
+    Only allow the move if it is into an enemy
+  */
+  pnX(list, cursor, delta) {
+    if (this.enemyAt(cursor)) {
+      list.push(cursor)
+    }
+  }
+
+  /*
+    Check if the pawn can move two spaces and add it to the list if available
+  */
+  pawnExtraMove(list, P, src) {
+    if (P.isWhite()) {
+      if (src[0] === 6) {
+        this.pn(list, this.addArrays(src, deltas.PW_first[0]), deltas.PW_first[0])
+      }
+    } else {
+      if (src[0] === 1) {
+        this.pn(list, this.addArrays(src, deltas.PB_first[0]), deltas.PB_first[0])
+      }
+    }
+  }
+
+  /*
+    Check if the pawn may attack diagonally and add it to the list if available
+  */
+  pawnDiagonalAttack(list, P, src) {
+    const self = this
+    if (P.isWhite()) {
+      deltas.PW_diag.forEach(
+        function(d) {
+          self.pnX(list, self.addArrays(src, d), d)
+        }.bind(this)
+      )
+    } else {
+      deltas.PB_diag.forEach(
+        function(d) {
+          self.pnX(list, self.addArrays(src, d), d)
+        }.bind(this)
+      )
+    }
+  }
+
+  /*
+    Generate moves like extra pawn move forward, castling, en passant, and
+    pawn upgrade
+  */
+  generateSpecialMoves(list, src) {
+    const P = this.getAt(src)
+    if (P.type[0] === 'P') {
+      this.pawnExtraMove(list, P, src)
+      this.pawnDiagonalAttack(list, P, src)
+    }
+  }
 }
+
+// whitespace guard
