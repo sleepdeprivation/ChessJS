@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.0"></a>
+# [0.1.0](https://github.com/sleepdeprivation/ChessJS/compare/v0.0.11...v0.1.0) (2017-08-07)
+
+
+### Features
+
+* **ChessBoard:** Added pawn moves 2 forward, and pawn moves diagonal to attack to the move generato ([2a3446a](https://github.com/sleepdeprivation/ChessJS/commit/2a3446a))
+* **ChessBoard.ts:** Created a function to perform a move and a helper function to check if the move ([2606579](https://github.com/sleepdeprivation/ChessJS/commit/2606579))
+
+
+
 <a name="0.0.11"></a>
 ## [0.0.11](https://github.com/sleepdeprivation/ChessJS/compare/v0.0.10...v0.0.11) (2017-08-06)
 
